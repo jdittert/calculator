@@ -3,6 +3,22 @@ body {
     text-align: center;
 }
 
+header, footer {
+    color: white;
+}
+
+#container {
+    margin-bottom: 2em;
+}
+
+.calculator {
+    background-color: darkblue;
+    padding: 10px;
+    width: 300px;
+    margin: auto;
+    border-radius: 4px;
+}
+
 #display {
     display: flex;
     width: 280px;
@@ -37,20 +53,4 @@ button.digit {
 button.operand, #clear {
     background-color: white;
     color: darkblue;
-}
-
-.calculator {
-    background-color: darkblue;
-    padding: 10px;
-    width: 300px;
-    margin: auto;
-    border-radius: 4px;
-}
-
-#container {
-    margin-bottom: 2em;
-}
-
-header, footer {
-    color: white;
 }
