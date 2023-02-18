@@ -7,12 +7,17 @@ function updateDisplay(input) {
     display.innerText = input;
 }
 
-const buttons = document.querySelectorAll("button");
-buttons.forEach(button => button.addEventListener("click", pushButton));
+const digits = document.querySelectorAll("div.digits button");
+digits.forEach(digit => digit.addEventListener("click", pushDigit));
 
-function pushButton() {
-    displayValue = this.innerText;    
+function pushDigit() {
+    if (displayValue === "0") {
+        displayValue = this.innerText;
+        updateDisplay(displayValue);
+    } else {
+    displayValue = displayValue + this.innerText;    
     updateDisplay(displayValue);
+    };
 }
 
 // Basic arithmetic functions
