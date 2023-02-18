@@ -1,4 +1,4 @@
-let displayValue = 0;
+let displayValue = "0";
 
 const display = document.getElementById("display");
 document.addEventListener("DOMContentLoaded", function() { updateDisplay(displayValue); });
@@ -11,7 +11,7 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click", pushButton));
 
 function pushButton() {
-    let displayValue = this.innerText;    
+    displayValue = this.innerText;    
     updateDisplay(displayValue);
 }
 
