@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    text-align: center;
 }
 
 #display {
@@ -19,6 +20,7 @@ button {
     width: 64px;
     height: 30px;
     border-radius: 4px;
+    font-size: 20px;
 }
 
 .button-row {
@@ -43,4 +45,12 @@ button.operand, #clear {
     width: 300px;
     margin: auto;
     border-radius: 4px;
+}
+
+#container {
+    margin-bottom: 2em;
+}
+
+header, footer {
+    color: white;
 }
