@@ -15,7 +15,7 @@ function updateDisplay(input) {
 }
 
 // Events and functions for pushing a digit key
-const digits = document.querySelectorAll("div.digits button");
+const digits = document.querySelectorAll("button.digit");
 digits.forEach(digit => digit.addEventListener("click", pushDigit));
 
 function pushDigit() {    
@@ -33,7 +33,7 @@ function pushDigit() {
 }
 
 // Events and functions for pushing an operand key
-const operands = document.querySelectorAll("div.operands button");
+const operands = document.querySelectorAll("button.operand");
 operands.forEach(operand => operand.addEventListener("click", pushOperand));
 
 function pushOperand() {
