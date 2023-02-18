@@ -1,7 +1,7 @@
 let displayValue = 0;
 
 const display = document.getElementById("display");
-document.addEventListener("DOMContentLoaded", function() { updateDisplay(0); });
+document.addEventListener("DOMContentLoaded", function() { updateDisplay(displayValue); });
 
 function updateDisplay(input) {
     display.innerText = input;
@@ -11,9 +11,8 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach(button => button.addEventListener("click", pushButton));
 
 function pushButton() {
-    let text = this.innerText;
-    displayValue = text;
-    updateDisplay(text);
+    let displayValue = this.innerText;    
+    updateDisplay(displayValue);
 }
 
 // Basic arithmetic functions
