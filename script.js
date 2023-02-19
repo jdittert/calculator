@@ -19,6 +19,8 @@ const digits = document.querySelectorAll("button.digit");
 digits.forEach(digit => digit.addEventListener("click", pushDigit));
 
 function pushDigit() {    
+    // Need safety valve for displayValue being larger than the display field
+    
     if (operandOne === "=") {
         firstNumber = 0;
         displayValue = this.innerText;
@@ -45,9 +47,16 @@ function pushOperand() {
     } else {
         secondNumber = +displayValue;        
         displayValue = operate(firstNumber, operandOne, secondNumber);
-        firstNumber = +displayValue;       
-        operandOne = this.innerText;
-        updateDisplay(displayValue);        
+        if (displayValue == Infinity) {
+            clearCalculator();
+            displayValue = "Divide by 0";
+            updateDisplay(displayValue);           
+        } else {
+            firstNumber = +displayValue;       
+            operandOne = this.innerText;
+            // Need method for rounding infinite decimals
+            updateDisplay(displayValue); 
+        }               
     }
 }
 
