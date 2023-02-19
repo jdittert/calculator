@@ -26,6 +26,7 @@ function pushDigit() {
     } else if (displayValue === "0" || clearDigit) {
         displayValue = this.innerText;
         updateDisplay(displayValue);
+        clearDigit = false;
     } else {
     displayValue = displayValue + this.innerText;    
     updateDisplay(displayValue);
