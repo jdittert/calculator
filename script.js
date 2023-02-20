@@ -11,7 +11,12 @@ document.addEventListener("DOMContentLoaded", function() { updateDisplay(display
 
 // Update display function
 function updateDisplay(input) {
-    display.innerText = input;
+    // Check for error messages and length of answer
+    if (typeof(input) != "string") {
+    input.toString().length > 9 ? display.innerText = "Err: Size" : display.innerText = input;
+    } else {
+        display.innerText = input;
+    }
 }
 
 // Events and functions for pushing a digit key
@@ -19,45 +24,46 @@ const digits = document.querySelectorAll("button.digit");
 digits.forEach(digit => digit.addEventListener("click", pushDigit));
 
 function pushDigit() {    
-    // Need safety valve for displayValue being larger than the display field
-    
-    if (operandOne === "=") {
+    if (!clearDigit && displayValue.length > 8) {
+        updateDisplay(displayValue);        
+    } else if (operandOne === "=") {
         firstNumber = 0;
+        operandOne = null;
         displayValue = this.innerText;
         updateDisplay(displayValue);
     } else if (displayValue === "0" || clearDigit) {
         displayValue = this.innerText;
-        updateDisplay(displayValue);
-        clearDigit = false;
+        updateDisplay(displayValue);        
     } else {
     displayValue = displayValue + this.innerText;    
     updateDisplay(displayValue);
     };
+    clearDigit = false;
 }
 
 // Events and functions for pushing an operand key
 const operands = document.querySelectorAll("button.operand");
 operands.forEach(operand => operand.addEventListener("click", pushOperand));
 
-function pushOperand() {
-    clearDigit = true;
+function pushOperand() {   
     if (!operandOne || operandOne === "=") {
         firstNumber = +displayValue;        
         operandOne = this.innerText;        
     } else {
         secondNumber = +displayValue;        
         displayValue = operate(firstNumber, operandOne, secondNumber);
-        if (displayValue == Infinity) {
+        if (displayValue === Infinity || Number.isNaN(displayValue)) {
             clearCalculator();
             displayValue = "Divide by 0";
             updateDisplay(displayValue);           
         } else {
             firstNumber = +displayValue;       
             operandOne = this.innerText;
-            // Need method for rounding infinite decimals
+            displayValue = Math.round((displayValue + Number.EPSILON) * 100000000) / 100000000;
             updateDisplay(displayValue); 
         }               
     }
+    clearDigit = true;
 }
 
 // Clear calculator function

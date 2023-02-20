@@ -32,6 +32,11 @@ header, footer {
     background-color: beige;
 }
 
+#display.full {
+    background-color: lightcoral;
+    transition-timing-function: ease-in-out;
+}
+
 button {
     width: 64px;
     height: 30px;
